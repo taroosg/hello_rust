@@ -1,41 +1,19 @@
-extern crate rand;
-use rand::Rng;
-use std::cmp::Ordering;
-use std::io;
-
 fn main() {
-  println!("Guess the number!");
+  // mutを入れると再代入できる
+  // let mut x = 5;
+  // println!("The value of x is: {}", x); // xの値は{}です
+  // x = 6;
+  // println!("The value of x is: {}", x);
 
-  let secret_number = rand::thread_rng().gen_range(1, 101);
+  let x = 5;
+  // これは再代入ではなくシャドーイングと呼ぶ（更新に近い）
+  let x = x + 1;
+  let x = x * 2;
 
-  // println!("The secret number is: {}", secret_number); //秘密の数字は次の通り: {}
+  println!("The value of x is: {}", x);
 
-  loop {
-    println!("Please input your guess.");
-    let mut guess = String::new();
-
-    io::stdin()
-      .read_line(&mut guess)
-      .expect("Failed to read line");
-
-    // 右のguessは入力された文字列の値．trim()は前後の空白と改行を削除する．
-    // u32型は32ビットの非負整数．u32型は小さな非負整数のデフォルトの選択肢として丁度良い
-    // parseの結果をmatchで受けて返す値を変える
-    // 下のOrderingをmatchする流れと同じ
-    // Okの場合はexpectが実行されて値をそのまま返す
-    let guess: u32 = match guess.trim().parse() {
-      Ok(num) => num,
-      Err(_) => continue,
-    };
-
-    println!("You guessed: {}", guess);
-    match guess.cmp(&secret_number) {
-      Ordering::Less => println!("Too small!"),  //小さすぎ！
-      Ordering::Greater => println!("Too big!"), //大きすぎ！
-      Ordering::Equal => {
-        println!("You win!");
-        break;
-      } //やったね！
-    }
-  }
+  // 型が異なるのでmutを使った再代入はできない
+  let spaces = "   ";
+  let spaces = spaces.len();
+  println!("The number of space is: {}", spaces);
 }
