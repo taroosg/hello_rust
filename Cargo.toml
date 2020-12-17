@@ -9,3 +9,11 @@ edition = "2018"
 [dependencies]
 ferris-says = "0.2"
 rand = "0.4"
+
+[[bin]]
+name = "suggestgame"
+path = "src/suggestgame.rs"
+
+[[bin]]
+name = "fibo"
+path = "src/fibo.rs"
