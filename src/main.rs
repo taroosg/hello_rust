@@ -1,3 +1,24 @@
+#[derive(Debug)]
+
+struct Rectangle {
+  width: u32,
+  height: u32,
+}
+
+// 構造体`Rectangle`に対する`area`メソッドを定義
+impl Rectangle {
+  // `self`は構造体`Rectangle`のこと
+  fn area(&self) -> u32 {
+    self.width * self.height
+  }
+
+  // 四角が他の四角の中に入るかどうか
+  // 別の四角は`Rectangle`の参照を借りる
+  fn can_hold(&self, other: &Rectangle) -> bool {
+    self.width > other.width && self.height > other.height
+  }
+}
+
 fn main() {
   // mutを入れると再代入できる
   // let mut x = 5;
@@ -110,6 +131,48 @@ fn main() {
   // // 配列のスライス
   // let a = [1, 2, 3, 4, 5];
   // let slice = &a[1..3];
+  // println!("{:?}", slice);
+
+  // // 構造体の定義
+  // struct Color(i32, i32, i32);
+  // struct Point(i32, i32, i32);
+
+  // let black = Color(0, 0, 0);
+  // let origin = Point(0, 0, 0);
+
+  // println!("{:?}", origin.0)
+
+  // // 構造体を使ったプログラム例
+
+  // // 高さと幅を別々の変数で定義
+  // // let width1 = 30;
+  // // let height1 = 50;
+  // // タプルを使う
+  // // let rect1 = (30, 50);
+  // // 構造体を使う
+  // let rect1 = Rectangle {
+  //   width: 30,
+  //   height: 50,
+  // };
+  // let rect2 = Rectangle {
+  //   width: 10,
+  //   height: 40,
+  // };
+  // let rect3 = Rectangle {
+  //   width: 60,
+  //   height: 45,
+  // };
+
+  // println!("{:#?}", rect2);
+
+  // println!(
+  //   // 長方形の面積は、{}平方ピクセルです
+  //   "The area of the rectangle is {} square pixels.",
+  //   // rect2がselfになる
+  //   rect2.area()
+  // );
+  // println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+  // println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
 
 // // 外部関数定義
@@ -143,4 +206,8 @@ fn main() {
 //   }
 //   // スペースがなければ文字列の長さを返す
 //   &s[..]
+// }
+
+// fn area(rectangle: &Rectangle) -> u32 {
+//   rectangle.width * rectangle.height
 // }
