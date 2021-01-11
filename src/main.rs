@@ -90,9 +90,57 @@ fn main() {
   //   "number is not divisible by 4, 3, or 2"
   // };
   // println!("result is {}", result);
+
+  // // `&`をつけて変数を参照
+  // let s1 = String::from("☕🍻🎓");
+  // let len = calculate_length(&s1);
+  // println!("The length of '{}' is {}.", s1, len);
+
+  // // `s`はミュータブルな変数
+  // let mut s = String::from("hello");
+
+  // change(&mut s);
+  // println!("New string is {}.", s);
+
+  // let mut s = String::from("hello world");
+  // let word = first_word(&s); // wordの中身は、値5になる
+  // println!("{}", word);
+  // s.clear(); // Stringを空にする。つまり、""と等しくする
+
+  // // 配列のスライス
+  // let a = [1, 2, 3, 4, 5];
+  // let slice = &a[1..3];
 }
 
 // // 外部関数定義
 // fn another_function(x: i32) -> i32 {
 //   x * 2
+// }
+
+// // 文字列を入力して長さを返す関数
+// // `&String`が文字列の参照を表している
+// fn calculate_length(s: &String) -> usize {
+//   // `s`のスコープはこの中だけ
+//   s.len()
+// }
+
+// // 入力文字列になにか追加する関数
+// fn change(some_string: &mut String) {
+//   some_string.push_str(", world");
+// }
+
+// fn first_word(s: &String) -> &str {
+//   // Stringをバイト配列に変換する
+//   let bytes = s.as_bytes();
+//   // バイト配列を文字列に変換
+//   // println!("bytes = {}", String::from_utf8(bytes.to_vec()).unwrap());
+
+//   // スペースがあったら何番目かを返す
+//   for (i, &item) in bytes.iter().enumerate() {
+//     if item == b' ' {
+//       return &s[0..i];
+//     }
+//   }
+//   // スペースがなければ文字列の長さを返す
+//   &s[..]
 // }
