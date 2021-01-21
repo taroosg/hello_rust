@@ -173,6 +173,62 @@ fn main() {
   // );
   // println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
   // println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
+
+  // enum型の`IpAddrKind`を定義
+  enum IpAddrKind {
+    V4,
+    V6,
+  }
+
+  // 構造体`IpAddr`を定義
+  // struct IpAddr {
+  //   kind: IpAddrKind,
+  //   address: String,
+  // }
+
+  //   // まとめられる
+  //   enum IpAddr {
+  //     V4(u8, u8, u8, u8),
+  //     V6(String),
+  // }
+
+  // let home = IpAddr::V4(127, 0, 0, 1);
+
+  // let loopback = IpAddr::V6(String::from("::1"));
+
+  // // `home`は`IpAddr`の構造体
+  // let home = IpAddr {
+  //   // `kind`は`IpAddrKind`型の`V4`
+  //   kind: IpAddrKind::V4,
+  //   // `address`は文字列
+  //   address: String::from("127.0.0.1"),
+  // };
+
+  // let loopback = IpAddr {
+  //   kind: IpAddrKind::V6,
+  //   address: String::from("::1"),
+  // };
+
+  enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+  }
+
+  fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+      Coin::Penny => {
+        println!("Lucky penny!");
+        1
+      }
+      Coin::Nickel => 5,
+      Coin::Dime => 10,
+      Coin::Quarter => 25,
+    }
+  }
+  let result = value_in_cents(Coin::Nickel);
+  println!("{:?}", result);
 }
 
 // // 外部関数定義
